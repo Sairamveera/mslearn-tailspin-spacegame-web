@@ -43,4 +43,4 @@ steps:
     azureSubscription: 'pay-as-you-o (b93fbe5f-1234-4f1f-a78f-a0570656701f)'
     appType: 'webApp'
     WebAppName: 'Spacega'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.ArtifactStagingDirectory)/drop/*.zip'
