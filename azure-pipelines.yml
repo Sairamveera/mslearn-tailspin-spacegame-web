@@ -42,10 +42,17 @@ steps:
     buildType: 'current'
     downloadType: 'single'
     downloadPath: '$(System.ArtifactsDirectory)'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactSDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'pay-as-you-o(b93fbe5f-1234-4f1f-a78f-a0570656701f)'
     appType: 'webApp'
     WebAppName: 'spacega'
-    packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
+    packageForLinux: '$(System.ArtifactsDirectory)/*.zip'
